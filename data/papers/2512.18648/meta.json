@@ -1,0 +1,14 @@
+{
+  "title": "Optimal Signal Extraction from Order Flow: A Matched Filter Perspective on Normalization and Market Microstructure",
+  "authors": [
+    "Sungwoo Kang"
+  ],
+  "arxiv_id": "2512.18648",
+  "published_at": "2025-12-21T08:50:11Z",
+  "categories": [
+    "q-fin.CP"
+  ],
+  "abstract": "We demonstrate that the choice of normalization for order flow intensity is fundamental to signal extraction in finance, not merely a technical detail. Through theoretical modeling, Monte Carlo simulation, and empirical validation using Korean market data, we prove that market capitalization normalization acts as a 'matched filter' for informed trading signals, achieving 1.32--1.97x higher correlation with future returns compared to traditional trading value normalization. The key insight is that informed traders scale positions by firm value (market capitalization), while noise traders respond to daily liquidity (trading volume), creating heteroskedastic corruption when normalizing by trading volume. By reframing the normalization problem using signal processing theory, we show that dividing order flow by market capitalization preserves the information signal while traditional volume normalization multiplies the signal by inverse turnover -- a highly volatile quantity. Our theoretical predictions are robust across parameter specifications and validated by empirical evidence showing 482% improvement in explanatory power. These findings have immediate implications for high-frequency trading algorithms, risk factor construction, and information-based trading strategies.",
+  "abs_url": "https://arxiv.org/abs/2512.18648v2",
+  "pdf_url": "https://arxiv.org/pdf/2512.18648v2"
+}

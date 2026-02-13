@@ -1,0 +1,17 @@
+{
+  "title": "Hidden Order in Trades Predicts the Size of Price Moves",
+  "authors": [
+    "Mainak Singha"
+  ],
+  "arxiv_id": "2512.15720",
+  "published_at": "2025-12-02T23:20:46Z",
+  "categories": [
+    "q-fin.TR",
+    "q-fin.ST",
+    "stat.AP",
+    "stat.ME"
+  ],
+  "abstract": "Financial markets exhibit an apparent paradox: while directional price movements remain largely unpredictable--consistent with weak-form efficiency--the magnitude of price changes displays systematic structure. Here we demonstrate that real-time order-flow entropy, computed from a 15-state Markov transition matrix at second resolution, predicts the magnitude of intraday returns without providing directional information. Analysis of 38.5 million SPY trades over 36 trading days reveals that conditioning on entropy below the 5th percentile increases subsequent 5-minute absolute returns by a factor of 2.89 (t = 12.41, p < 0.0001), while directional accuracy remains at 45.0%--statistically indistinguishable from chance (p = 0.12). This decoupling arises from a fundamental symmetry: entropy is invariant under sign permutation, detecting the presence of informed trading without revealing its direction. Walk-forward validation across five non-overlapping test periods confirms out-of-sample predictability, and label-permutation placebo tests yield z = 14.4 against the null. These findings suggest that information-theoretic measures may serve as volatility state variables in market microstructure, though the limited sample (36 days, single instrument) requires extended validation.",
+  "abs_url": "https://arxiv.org/abs/2512.15720v1",
+  "pdf_url": "https://arxiv.org/pdf/2512.15720v1"
+}
