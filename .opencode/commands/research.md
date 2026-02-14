@@ -1,11 +1,18 @@
 ---
 description: Execute q-fin paper collection, ranking, and structured summaries
 agent: general
-subtask: true
+subtask: false
 ---
 입력:
 - 기본 입력은 직전 `/ask`의 `[PLAN_JSON]`을 사용한다.
 - `$ARGUMENTS`는 선택 입력이다. 직전 `[PLAN_JSON]`이 없을 때만 사용한다.
+
+중요 동작 규칙(견고성):
+- 직전 `/ask` 출력이 코드블록(```json) 안에 있어도 `[PLAN_JSON]` 객체를 추출해 사용한다.
+- 직전 `/ask`를 찾지 못하면, `$ARGUMENTS`가 아래 중 하나인지 먼저 확인한다.
+  1) 순수 JSON 객체
+  2) `[PLAN_JSON]` 섹션을 포함한 텍스트
+- 위 1) 또는 2)에서 추출 가능한 경우 `ask_plan`과 동일하게 취급해 계속 진행한다.
 
 입력 우선순위:
 1) 직전 `/ask`의 `[PLAN_JSON]`
@@ -42,16 +49,17 @@ subtask: true
 - 적합 후보가 부족하면 `selection_policy.allow_less_than_max=true`에 따라 더 적게 반환
 
 5) 본문 처리 및 요약
-- 가능하면 PDF를 저장하고 본문 기반 요약을 작성한다.
-- PDF 확보 실패 시 abstract 기반 요약으로 대체하고 명시한다.
+- PDF 파일은 로컬에 저장하지 않는다.
+- `meta.json`에 `pdf_url`을 포함해 원문 PDF 경로를 기록한다.
+- 요약은 abstract 기반으로 작성하며, 본문(PDF) 미열람 기반임을 명시한다.
 - 요약은 한국어로 작성하되 핵심 용어는 원문 병기 가능.
 - 논문당 `summary.md`는 1개만 생성한다.
 
 6) 저장 정책
 - 선택 논문마다 아래 경로를 사용한다:
   - `data/papers/{arxiv_id}/meta.json` (항상 저장)
-  - `data/papers/{arxiv_id}/paper.pdf` (가능할 때만 저장)
   - `data/papers/{arxiv_id}/summary.md` (항상 저장)
+- `paper.pdf`는 저장하지 않는다. PDF 경로는 `meta.json`의 `pdf_url`로만 관리한다.
 - 저장 실패 시 항목별 실패 사유를 결과에 포함한다.
 
 출력 형식:
@@ -68,7 +76,6 @@ subtask: true
   - 구조화 요약(계획의 `summary_focus` 기준)
   - 저장 경로:
     - meta.json
-    - paper.pdf (없으면 없음)
     - summary.md
 
 3) `[EXCLUDED_CANDIDATES]` (선택)
