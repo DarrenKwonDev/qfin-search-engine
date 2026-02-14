@@ -1,0 +1,80 @@
+data/*
+
+# Nightly runtime outputs
+nightly-ralph/logs/
+nightly-ralph/state/
+
+# Keep only command/plugin sources in .opencode
+.opencode/*
+!.opencode/commands/
+!.opencode/commands/**
+!.opencode/plugins/
+!.opencode/plugins/**
+
+# Secrets and local env
+.env
+.env.*
+!.env.example
+!.env.template
+*.env.local
+
+# API keys / credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.kdb
+*.der
+*.ovpn
+*.mobileconfig
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+credentials.json
+credential.json
+service-account*.json
+secrets*.json
+secret*.json
+
+# Wallet/crypto sensitive files
+*.keystore
+*.seed
+*.mnemonic
+*.wallet
+
+# Local runtime artifacts
+*.log
+*.pid
+*.pid.lock
+*.sqlite
+*.sqlite3
+*.db
+
+# JS/TS/Bun build artifacts
+node_modules/
+.bun/
+.cache/
+.turbo/
+.eslintcache
+coverage/
+dist/
+build/
+tmp/
+temp/
+*.tmp
+*.tsbuildinfo
+
+# Common frontend framework outputs
+.next/
+.nuxt/
+.svelte-kit/
+.parcel-cache/
+
+# Editor/OS local files
+.DS_Store
+.idea/
+.vscode/

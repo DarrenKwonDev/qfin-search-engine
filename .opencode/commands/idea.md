@@ -7,10 +7,16 @@ subtask: false
 입력:
 - 기본 입력은 `data/papers/*/summary.md`와 `data/papers/*/meta.json`이다.
 - `$ARGUMENTS`는 선택 입력이며, 아래 형태를 권장한다:
+  - 예시: `"topic=머신러닝을 제외하고 시장미시구조만으로 구동할 수 있는 트레이딩 전략 조사 | practical test: bid-ask spread dynamics and liquidity taking timing" lookback=10 style=balanced max_ideas=3`
+  - 예시: `"topic=머신러닝을 제외하고 시장미시구조만으로 구동할 수 있는 트레이딩 전략 조사 | focus: bid-ask spread dynamics and liquidity taking timing" lookback=10 style=balanced max_ideas=3`
+  - 예시: `"topic=머신러닝을 제외하고 시장미시구조만으로 구동할 수 있는 트레이딩 전략 조사 | failure-case review: order flow imbalance signal design and execution rules" lookback=10 style=balanced max_ideas=3`
+  - 예시: `"topic=머신러닝을 제외하고 시장미시구조만으로 구동할 수 있는 트레이딩 전략 조사 | practical test: order flow imbalance signal design and execution rules" lookback=10 style=balanced max_ideas=3`
+  - 예시: `"topic=머신러닝을 제외하고 시장미시구조만으로 구동할 수 있는 트레이딩 전략 조사 | focus: order flow imbalance signal design and execution rules" lookback=10 style=balanced max_ideas=3`
   - `topic=<키워드>` (예: microstructure, order flow, execution)
   - `lookback=<N>` (최근 N편, 기본 10)
   - `style=<conservative|balanced|aggressive>` (기본 balanced)
   - `max_ideas=<N>` (기본 3, 최대 5)
+  - 공백/구분자(`|`, `:`)가 포함된 topic은 큰따옴표로 감싸 전달한다.
 
 목표:
 - 저장된 논문 요약들을 묶어 공통 패턴/충돌 가설을 정리한다.

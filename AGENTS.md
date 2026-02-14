@@ -14,6 +14,29 @@ arXiv에서 사용자의 한줄 입력을 해석해 q-fin 논문을 찾고, 핵�
 - 모든 입력은 command로 들어오며 subcommand로 세부 의도를 구분한다.
 - 내부 파이프라인은 command 종류와 무관하게 동일하게 동작한다.
 
+## Nightly Automation
+- 미션 기반 밤샘 자동 실행은 `nightly-ralph/` 디렉토리에서 관리한다.
+- 엔트리포인트: `nightly-ralph/nightly-ralph.sh`
+- 미션 템플릿: `nightly-ralph/nightly-mission.json`
+- 운영 문서: `nightly-ralph/README.md`
+- state 초기화: `nightly-ralph/reset-state.sh --yes`
+
+## Command Registry
+- /ask: 사용자의 한줄 질문을 의도 분류하고, q-fin 논문 최대 3편을 찾아 핵심만 빠르게 답한다.
+- /research: 질문 주제에 맞는 논문을 수집·랭킹하고, 구조화 요약(summary.md)까지 생성한다.
+- /idea: 요약된 논문을 바탕으로 확장 아이디어(가설/후속 탐색 포인트)를 제안하되, 자동 매매/백테스트는 수행하지 않는다.
+
+## Command Map (Machine Readable)
+```yaml
+commands:
+  - name: /ask
+    desc: "한줄 질문을 빠르게 해석해 관련 q-fin 논문과 핵심 답변을 반환"
+  - name: /research
+    desc: "논문 수집·랭킹·구조화 요약까지 수행"
+  - name: /idea
+    desc: "논문 기반 확장 아이디어를 제안(자동 매매/백테스트 제외)"
+```
+
 ## 기대 동작
 - 한줄 입력을 받아 의도를 분류하고 핵심 키워드/유사어 확장을 생성한다.
 - arXiv 공식 API를 사용해 q-fin 논문 후보를 수집하고 적합도를 평가한다.

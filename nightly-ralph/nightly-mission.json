@@ -1,0 +1,33 @@
+{
+  "goal": "머신러닝을 제외하고 시장미시구조만으로 구동할 수 있는 트레이딩 전략 조사",
+  "constraints": {
+    "forbidden_keywords": [
+      "machine learning",
+      "deep learning",
+      "neural",
+      "transformer",
+      "xgboost",
+      "random forest",
+      "reinforcement learning"
+    ],
+    "required_keywords": [
+      "market microstructure",
+      "order flow",
+      "limit order book"
+    ]
+  },
+  "generation": {
+    "batch_size": 5,
+    "low_watermark": 2
+  },
+  "stop": {
+    "max_rounds": 6,
+    "max_topics": 30,
+    "min_new_topic_ratio": 0.2
+  },
+  "idea": {
+    "lookback": 10,
+    "style": "balanced",
+    "max_ideas": 3
+  }
+}

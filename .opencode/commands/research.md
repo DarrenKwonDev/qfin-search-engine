@@ -3,20 +3,25 @@ description: Execute q-fin paper collection, ranking, and structured summaries
 agent: general
 subtask: false
 ---
+
+인자 원문:
+$ARGUMENTS
+
 입력:
 - 기본 입력은 직전 `/ask`의 `[PLAN_JSON]`을 사용한다.
-- `$ARGUMENTS`는 선택 입력이다. 직전 `[PLAN_JSON]`이 없을 때만 사용한다.
+- 인자 원문(`$ARGUMENTS`)은 선택 입력이다. 직전 `[PLAN_JSON]`이 없을 때만 사용한다.
+- 주의: 렌더링 이슈를 피하기 위해 아래부터는 `$ARGUMENTS` 대신 `인자 원문`이라고 표기한다.
 
 중요 동작 규칙(견고성):
 - 직전 `/ask` 출력이 코드블록(```json) 안에 있어도 `[PLAN_JSON]` 객체를 추출해 사용한다.
-- 직전 `/ask`를 찾지 못하면, `$ARGUMENTS`가 아래 중 하나인지 먼저 확인한다.
+- 직전 `/ask`를 찾지 못하면, 인자 원문이 아래 중 하나인지 먼저 확인한다.
   1) 순수 JSON 객체
   2) `[PLAN_JSON]` 섹션을 포함한 텍스트
 - 위 1) 또는 2)에서 추출 가능한 경우 `ask_plan`과 동일하게 취급해 계속 진행한다.
 
 입력 우선순위:
 1) 직전 `/ask`의 `[PLAN_JSON]`
-2) `$ARGUMENTS` 기반으로 동일 스키마의 계획을 내부 생성
+2) 인자 원문 기반으로 동일 스키마의 계획을 내부 생성
 3) 둘 다 없으면 실행 중단 후, 질문 또는 ask 결과가 필요하다고 명시
 
 목표:
